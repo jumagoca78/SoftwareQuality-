@@ -14,5 +14,18 @@ public class Triangle {
         
         return "El triangulo es: ";
     }
+
+    //check if the numbers correnponds to a triangle
+    public static boolean isTriangle (int a, int b, int c){
+        //Rule for a triangle, no side is larger than de sum of the two other sides    
+        if ( (a+b>c) &&
+             (a+c>b) &&
+             (b+c>a)   )
+             {
+                 return true;
+
+             }
+        return false;
+    }
     
 }
