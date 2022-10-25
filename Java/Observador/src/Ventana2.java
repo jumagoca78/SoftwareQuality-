@@ -3,32 +3,28 @@ import java.awt.Container;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.*;
-
-public class Ventana1 extends JFrame{
+public class Ventana2 extends JFrame {
     private JButton boton1;
     private ArrayList <JFrame> observers;
     public JLabel etiquetaMiEstado, eqtiquetaEstadoOtraVentana;
     private int miEstado = 0;
 
 
-    public Ventana1(Ventana2 ventana){
-        super("Ventana 1");
+    public Ventana2(Ventana1 ventana){
 
-        observers = new ArrayList<Ventana2>();
-        observers.add(ventana);
+    super("Ventana 2");
 
-        Container container = getContentPane();
-        container.setLayout(new FlowLayout());
+    observers = new ArrayList<Ventana1>();
+    observers.add(ventana);
+
+    Container container = getContentPane();
+    container.setLayout(new FlowLayout());
         
-        Handler1 handler1 = new Handler1(this); 
-
-        boton1 = new JButton("Boton 1");
-        boton1.addActionListener(handler1);
+        boton1 = new JButton("Boton 2");
         container.add(boton1);
         etiquetaMiEstado = new JLabel("Mi Estado = 0");
         container.add(etiquetaMiEstado);
@@ -68,10 +64,10 @@ public class Ventana1 extends JFrame{
 } 
 
 
-public class Handler1 implements AncestorListener{
+public class Handler implements AncestorListener{
     Ventana1 v1;
 
-    public Handler1(Ventana1 miVentana) {
+    public Handler(JFrame miVentana) {
         v1= (Ventana1) miVentana;
     }
 
@@ -80,6 +76,4 @@ public class Handler1 implements AncestorListener{
         v1.setMiEstado();
         
     }
-
- 
 }
